@@ -1,8 +1,8 @@
 <h2>Articles Populaires</h2>
 <div class="main-container">
-  for (article of articles;) {
-    @if (articles.isPublished) {
-  <app-article-thumbnail (article)="article" (notifyLike)="handleLike()"></app-article-thumbnail>
+  @for (article of articles; track $index) {
+    @if (article.isPublished) {
+  <app-article-thumbnail [article]="article" (notifyLike)="handleLike(article)"></app-article-thumbnail>
     }
   } @empty {
   <p>Aucun article publié pour le moment</p>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrl: './article-page.component.scss'
 })
 export class ArticlePageComponent {
-  private route: ActivatedRoute = injecting(ActivatedRoute);
+  private route: ActivatedRoute = inject(ActivatedRoute);
   articleId!: number;
 
   ngOnInit() {

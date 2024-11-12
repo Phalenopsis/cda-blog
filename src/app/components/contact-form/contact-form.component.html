@@ -1,7 +1,7 @@
-<form (ngSubmit)="contactForm.valid && onSubmit()">
+<form (ngSubmit)="contactForm.valid && onSubmit()" #contactForm="ngForm">
   <fieldset>
     <label for="lastname">Nom</label>
-    <input id="lastname" name="lastname" type="text" require min="2">
+    <input id="lastname" name="lastname" type="text" required minlength="2" [(ngModel)]="newMessage.lastname" #lastname="ngModel">
     @if (lastname.errors) {
       <div>
         @if (lastname.errors['required']) {
@@ -16,7 +16,7 @@
 
   <fieldset>
     <label for="firstname">Prénom</label>
-    <input id="firstname" name="firstname" type="text" require min="2">
+    <input id="firstname" name="firstname" type="text" required minlength="2" [(ngModel)]="newMessage.firstname" #firstname="ngModel">
     @if (firstname.errors) {
       <div>
         @if (firstname.errors['required']) {
@@ -31,7 +31,7 @@
 
   <fieldset>
     <label for="email">Contact</label>
-    <input id="email" name="email" type="email" require email>
+    <input id="email" name="email" type="email" required email [(ngModel)]="newMessage.email" #email="ngModel">
     @if (email.errors) {
       <div>
         @if (email.errors['required']) {
@@ -46,7 +46,7 @@
 
   <fieldset>
     <label for="content">Contenu du message</label>
-    <textarea id="content" name="content" require minlength="20" rows="4" cols="50"></textarea>
+    <textarea id="content" name="content" require minlength="20" rows="4" cols="50" [(ngModel)]="newMessage.content" #content="ngModel"></textarea>
     @if (content.errors) {
       <div>
         @if (content.errors['required']) {
