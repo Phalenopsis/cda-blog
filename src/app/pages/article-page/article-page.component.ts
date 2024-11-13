@@ -2,9 +2,9 @@ import { Component, DestroyRef, inject } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Article } from '../../models/article.model';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ArticleDetailsComponent } from "../../components/article-details/article-details.component";
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-article-page',
@@ -15,23 +15,23 @@ import { ArticleDetailsComponent } from "../../components/article-details/articl
 })
 export class ArticlePageComponent {
   private route: ActivatedRoute = inject(ActivatedRoute);
-  articleId!: number;
+  #articleId!: number;
 
-  http: HttpClient = inject(HttpClient);
+  #apiService: ApiService = inject(ApiService);
 
-  destroyRef: DestroyRef = inject(DestroyRef);
+  #destroyRef: DestroyRef = inject(DestroyRef);
 
   $article!: Observable<Article>;
 
   $getArticleById(): Observable<Article> {
-    return this.http.get<Article>(`http://localhost:3000/articles/${this.articleId}`);
+    return this.#apiService.$getArticleById(this.#articleId);
   }
 
   ngOnInit() {
     this.route.paramMap.pipe(
-      takeUntilDestroyed(this.destroyRef)
+      takeUntilDestroyed(this.#destroyRef)
     ).subscribe((params: ParamMap) => {
-      this.articleId = Number(params.get('id'));
+      this.#articleId = Number(params.get('id'));
       this.$article = this.$getArticleById();
     });
   }
