@@ -1,0 +1,16 @@
+@if ($article | async; as article) {
+    <article>
+        <hgroup>
+            <h2>{{article.title}}</h2>
+            <p>{{article.createdAt}}</p>
+        </hgroup>
+        
+        <img [src]="article.image" [alt]="article.title">
+        <p>{{article.isLiked ? 'coeur' : 'pas coeur'}}</p>
+        <p>{{article.content}}</p>
+        <footer>
+            <p>{{article.likeCount}} j'aime</p>
+            <p>{{article.categoryName}}</p>
+        </footer>
+    </article>
+}

@@ -1,0 +1,14 @@
+:host {
+    display: flex;
+    justify-content: center;
+}
+
+article {
+    padding: 1rem;
+    border: 1px solid black;
+    width: 300px;
+
+    img {
+        justify-self: center;
+    }
+}
