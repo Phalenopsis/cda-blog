@@ -4,13 +4,14 @@
             <h2>{{article.title}}</h2>
             <p>{{article.createdAt}}</p>
         </hgroup>
-        
-        <img [src]="article.image" [alt]="article.title">
-        <p>{{article.isLiked ? 'coeur' : 'pas coeur'}}</p>
-        <p>{{article.content}}</p>
+        <section>
+            <img [src]="article.image" [alt]="article.title">
+            <p (click)="sendNotification(article)">{{article.isLiked ? 'coeur' : 'pas coeur'}}</p>
+            <p>{{article.content}}</p>
+        </section>
         <footer>
             <p>{{article.likeCount}} j'aime</p>
-            <p>{{article.categoryName}}</p>
+            <p class="category">{{article.categoryName}}</p>
         </footer>
     </article>
 }

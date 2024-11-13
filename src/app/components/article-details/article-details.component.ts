@@ -12,4 +12,8 @@ import { AsyncPipe, JsonPipe } from '@angular/common';
 })
 export class ArticleDetailsComponent {
   @Input() $article!: Observable<Article>;
+
+  sendNotification(article: Article) {
+    article.isLiked = !article.isLiked;
+  }
 }

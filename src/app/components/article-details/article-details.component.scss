@@ -5,10 +5,29 @@
 
 article {
     padding: 1rem;
-    border: 1px solid black;
+    border: 8px double black;
+    border-radius: 8px;
     width: 300px;
 
-    img {
-        justify-self: center;
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            font-size: 0.75rem;
+            display: block;
+            padding: 4px;
+        }
+
+        p.category {
+            background-color: black;
+            color: white;
+        }
     }
 }
